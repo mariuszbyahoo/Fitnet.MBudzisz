@@ -19,6 +19,7 @@ namespace Fitnet.MBudzisz.GUI
 
         private void executeButton_Click(object sender, EventArgs e)
         {
+
         }
     }
 }
