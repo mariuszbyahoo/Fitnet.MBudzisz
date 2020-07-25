@@ -105,6 +105,7 @@ namespace Fitnet.MBudzisz.GUI
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            logsTextBox.Clear();
             if (mainBackgroundWorker.IsBusy)
             {
                 mainBackgroundWorker.CancelAsync();

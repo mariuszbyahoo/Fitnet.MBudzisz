@@ -142,7 +142,7 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(401, 50);
             this.cancelButton.TabIndex = 0;
-            this.cancelButton.Text = "cancel button";
+            this.cancelButton.Text = "Cancel and clear logs";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
@@ -263,6 +263,7 @@
             // 
             // MainForm
             // 
+            this.AcceptButton = this.executeButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
