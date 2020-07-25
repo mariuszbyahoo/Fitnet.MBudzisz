@@ -39,12 +39,12 @@ namespace Fitnet.MBudzisz.GUI
                     }
                     else
                     {
-                        logsTextBox.Text = noDirFound;
+                        logsTextBox.AppendText(noDirFound);
                     }
                 }
                 else
                 {
-                    logsTextBox.Text = badPatternSupplied;
+                    logsTextBox.AppendText(badPatternSupplied);
                 }
             }
         }
@@ -76,8 +76,9 @@ namespace Fitnet.MBudzisz.GUI
 
         private void mainBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            logsTextBox.Text += $"{e.UserState as string}";
+            logsTextBox.AppendText($"{e.UserState as string}");
             progressBar.Value = e.ProgressPercentage;
+            logsTextBox.ScrollToCaret();
         }
 
         private void mainBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -94,7 +95,8 @@ namespace Fitnet.MBudzisz.GUI
             }
             else
             {
-                logsTextBox.Text += $"{Environment.NewLine}DONE.{Environment.NewLine}";
+                logsTextBox.AppendText($"{Environment.NewLine}DONE.{Environment.NewLine}");
+                logsTextBox.ScrollToCaret();
             }
 
             executeButton.Enabled = true;
@@ -107,6 +109,11 @@ namespace Fitnet.MBudzisz.GUI
             {
                 mainBackgroundWorker.CancelAsync();
             }
+        }
+
+        private void logsTextBox_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

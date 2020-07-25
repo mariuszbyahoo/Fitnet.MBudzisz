@@ -106,9 +106,11 @@
             this.logsTextBox.Location = new System.Drawing.Point(0, 0);
             this.logsTextBox.Multiline = true;
             this.logsTextBox.Name = "logsTextBox";
+            this.logsTextBox.ReadOnly = true;
             this.logsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.logsTextBox.Size = new System.Drawing.Size(800, 174);
             this.logsTextBox.TabIndex = 0;
+            this.logsTextBox.TextChanged += new System.EventHandler(this.logsTextBox_TextChanged);
             // 
             // panel3
             // 
