@@ -58,11 +58,19 @@ namespace Fitnet.MBudzisz.GUI
             // using parenthesees to make loop stop condition clear
             for (var i = 1; i < (files.Length+1); i ++)
             {
+                var start = DateTime.Now.Millisecond;
                 var file = files[i-1];
+
                 var progressVal = (int)((double)i / (double)files.Length * 100.00);
                 var result = _inspector.InspectFile(file, lookupStringTextBox.Text);
-                mainBackgroundWorker.ReportProgress(progressVal, $"In a file : {file.Name} Pattern: {lookupStringTextBox.Text} occured: {result} times.{Environment.NewLine}");
-                Thread.Sleep(1000);
+
+                var stop = DateTime.Now.Millisecond;
+                var lookupTime = stop - start;
+
+                var msg = $"In a file : {file.Name} Pattern: {lookupStringTextBox.Text} occured: {result} times. " +
+                    $"{Environment.NewLine} Lookup took: {lookupTime}ms{Environment.NewLine}";
+
+                mainBackgroundWorker.ReportProgress(progressVal, msg);
             }
         }
 

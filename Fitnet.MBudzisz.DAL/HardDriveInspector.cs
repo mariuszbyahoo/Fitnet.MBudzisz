@@ -17,7 +17,6 @@ namespace Fitnet.MBudzisz.DAL
             int i = 0;
             while ((i = contents.IndexOf(lookupValue, i)) != -1)
             {
-                Thread.Sleep(1000);
                 i += lookupValue.Length;
                 count++;
             }
