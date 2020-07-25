@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,7 +15,10 @@ namespace Fitnet.MBudzisz.GUI
 {
     public partial class MainForm : Form
     {
-        private readonly IDataInspector _inspector;
+        private readonly IFileInspector _inspector;
+        private readonly string noDirFound = $"No directory found at provided path, start from providing the drive ie: 'C://'";
+        private readonly string badPatternSupplied = "You have to provide at least 2 characters long pattern.";
+
         public MainForm()
         {
             _inspector = new HardDriveInspector();
@@ -25,35 +29,46 @@ namespace Fitnet.MBudzisz.GUI
         {
             if (!mainBackgroundWorker.IsBusy)
             {
-                executeButton.Enabled = false;
-                cancelButton.Enabled = true;
-                mainBackgroundWorker.RunWorkerAsync();
+                if (lookupStringTextBox.Text.Length > 1)
+                {
+                    if (Directory.Exists(pathTextBox.Text))
+                    {
+                        executeButton.Enabled = false;
+                        cancelButton.Enabled = true;
+                        mainBackgroundWorker.RunWorkerAsync();
+                    }
+                    else
+                    {
+                        logsTextBox.Text = noDirFound;
+                    }
+                }
+                else
+                {
+                    logsTextBox.Text = badPatternSupplied;
+                }
             }
         }
 
         private void mainBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            int sum = 0;
-            for (int i = 0; i < 100; i++)
+            var dir = new DirectoryInfo(pathTextBox.Text);
+            var files = dir.EnumerateFiles().Where(f => (f.Name.Contains(".txt")) || (f.Name.Contains(".bin"))).ToArray();
+
+            mainBackgroundWorker.ReportProgress(0);
+            // using parenthesees to make loop stop condition clear
+            for (var i = 1; i < (files.Length+1); i ++)
             {
+                var file = files[i-1];
+                var progressVal = (int)((double)i / (double)files.Length * 100.00);
+                var result = _inspector.InspectFile(file, lookupStringTextBox.Text);
+                mainBackgroundWorker.ReportProgress(progressVal, $"In a file : {file.Name} Pattern: {lookupStringTextBox.Text} occured: {result} times.{Environment.NewLine}");
                 Thread.Sleep(1000);
-                sum = sum + i;
-                mainBackgroundWorker.ReportProgress(i);
-
-                if (mainBackgroundWorker.CancellationPending)
-                {
-                    e.Cancel = true;
-                    mainBackgroundWorker.ReportProgress(0);
-                    return;
-                }
-
-                e.Result = sum;
             }
-            _inspector.InspectDataLayer(this.pathTextBox.Text, this.lookupStringTextBox.Text);
         }
 
         private void mainBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            logsTextBox.Text += $"{e.UserState as string}";
             progressBar.Value = e.ProgressPercentage;
         }
 
@@ -71,8 +86,7 @@ namespace Fitnet.MBudzisz.GUI
             }
             else
             {
-                progressBar.Value = 0;
-                logsTextBox.Text += "\n DONE.";
+                logsTextBox.Text += $"{Environment.NewLine}DONE.{Environment.NewLine}";
             }
 
             executeButton.Enabled = true;
@@ -85,7 +99,6 @@ namespace Fitnet.MBudzisz.GUI
             {
                 mainBackgroundWorker.CancelAsync();
             }
-            cancelButton.Enabled = false;
         }
     }
 }

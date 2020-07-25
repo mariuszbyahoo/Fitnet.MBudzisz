@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ssMain = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.logsTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonsPanel = new System.Windows.Forms.Panel();
@@ -91,22 +89,12 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.logsTextBox);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 250);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(800, 174);
             this.panel4.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(480, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(8, 8);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // logsTextBox
             // 
@@ -121,7 +109,6 @@
             this.logsTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.logsTextBox.Size = new System.Drawing.Size(800, 174);
             this.logsTextBox.TabIndex = 0;
-            this.logsTextBox.Text = resources.GetString("logsTextBox.Text");
             // 
             // panel3
             // 
@@ -314,7 +301,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.ComponentModel.BackgroundWorker mainBackgroundWorker;
         private System.Windows.Forms.Button executeButton;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel buttonsPanel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Splitter buttonsSplitter;
