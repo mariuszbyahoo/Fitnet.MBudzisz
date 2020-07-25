@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Fitnet.MBudzisz.DAL
+namespace Fitnet.MBudzisz.Utils
 {
     public class HardDriveInspector : IFileInspector
     {

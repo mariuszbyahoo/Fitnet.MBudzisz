@@ -1,4 +1,4 @@
-﻿using Fitnet.MBudzisz.DAL;
+﻿using Fitnet.MBudzisz.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,7 +68,7 @@ namespace Fitnet.MBudzisz.GUI
                 var lookupTime = stop - start;
 
                 var msg = $"In a file : {file.Name} Pattern: {lookupStringTextBox.Text} occured: {result} times. " +
-                    $"{Environment.NewLine} Lookup took: {lookupTime}ms{Environment.NewLine}";
+                    $"Lookup took: {lookupTime}ms{Environment.NewLine}";
 
                 mainBackgroundWorker.ReportProgress(progressVal, msg);
             }
