@@ -17,14 +17,8 @@ namespace Fitnet.MBudzisz.GUI
             InitializeComponent();
         }
 
-        private void pathLabel_Click(object sender, EventArgs e)
+        private void executeButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
