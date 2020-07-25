@@ -33,8 +33,15 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.logsTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonsPanel = new System.Windows.Forms.Panel();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.buttonsSplitter = new System.Windows.Forms.Splitter();
+            this.executeButton = new System.Windows.Forms.Button();
+            this.progressPanel = new System.Windows.Forms.Panel();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lookupStringTextBox = new System.Windows.Forms.TextBox();
             this.stringLabel = new System.Windows.Forms.Label();
@@ -42,21 +49,14 @@
             this.pathTextBox = new System.Windows.Forms.TextBox();
             this.pathLabel = new System.Windows.Forms.Label();
             this.mainBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.executeButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.progressPanel = new System.Windows.Forms.Panel();
-            this.buttonsPanel = new System.Windows.Forms.Panel();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.buttonsSplitter = new System.Windows.Forms.Splitter();
             this.ssMain.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.buttonsPanel.SuspendLayout();
+            this.progressPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.progressPanel.SuspendLayout();
-            this.buttonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ssMain
@@ -99,6 +99,15 @@
             this.panel4.Size = new System.Drawing.Size(800, 174);
             this.panel4.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(480, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(8, 8);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // logsTextBox
             // 
             this.logsTextBox.BackColor = System.Drawing.Color.Navy;
@@ -123,7 +132,69 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(800, 100);
             this.panel3.TabIndex = 2;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // buttonsPanel
+            // 
+            this.buttonsPanel.Controls.Add(this.cancelButton);
+            this.buttonsPanel.Controls.Add(this.buttonsSplitter);
+            this.buttonsPanel.Controls.Add(this.executeButton);
+            this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonsPanel.Location = new System.Drawing.Point(0, 50);
+            this.buttonsPanel.Name = "buttonsPanel";
+            this.buttonsPanel.Size = new System.Drawing.Size(800, 50);
+            this.buttonsPanel.TabIndex = 1;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.cancelButton.Location = new System.Drawing.Point(399, 0);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(401, 50);
+            this.cancelButton.TabIndex = 0;
+            this.cancelButton.Text = "cancel button";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // buttonsSplitter
+            // 
+            this.buttonsSplitter.Location = new System.Drawing.Point(396, 0);
+            this.buttonsSplitter.Name = "buttonsSplitter";
+            this.buttonsSplitter.Size = new System.Drawing.Size(3, 50);
+            this.buttonsSplitter.TabIndex = 1;
+            this.buttonsSplitter.TabStop = false;
+            // 
+            // executeButton
+            // 
+            this.executeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.executeButton.Dock = System.Windows.Forms.DockStyle.Left;
+            this.executeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.executeButton.Location = new System.Drawing.Point(0, 0);
+            this.executeButton.Name = "executeButton";
+            this.executeButton.Padding = new System.Windows.Forms.Padding(3);
+            this.executeButton.Size = new System.Drawing.Size(396, 50);
+            this.executeButton.TabIndex = 0;
+            this.executeButton.Text = "ExecuteLookup";
+            this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
+            // 
+            // progressPanel
+            // 
+            this.progressPanel.Controls.Add(this.progressBar);
+            this.progressPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressPanel.Location = new System.Drawing.Point(0, 0);
+            this.progressPanel.Name = "progressPanel";
+            this.progressPanel.Size = new System.Drawing.Size(800, 50);
+            this.progressPanel.TabIndex = 0;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar.Location = new System.Drawing.Point(0, 0);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(800, 50);
+            this.progressBar.TabIndex = 0;
             // 
             // panel2
             // 
@@ -197,77 +268,9 @@
             // 
             this.mainBackgroundWorker.WorkerReportsProgress = true;
             this.mainBackgroundWorker.WorkerSupportsCancellation = true;
-            // 
-            // executeButton
-            // 
-            this.executeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.executeButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.executeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.executeButton.Location = new System.Drawing.Point(0, 0);
-            this.executeButton.Name = "executeButton";
-            this.executeButton.Padding = new System.Windows.Forms.Padding(3);
-            this.executeButton.Size = new System.Drawing.Size(396, 50);
-            this.executeButton.TabIndex = 0;
-            this.executeButton.Text = "ExecuteLookup";
-            this.executeButton.UseVisualStyleBackColor = true;
-            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(480, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(8, 8);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // progressPanel
-            // 
-            this.progressPanel.Controls.Add(this.progressBar);
-            this.progressPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressPanel.Location = new System.Drawing.Point(0, 0);
-            this.progressPanel.Name = "progressPanel";
-            this.progressPanel.Size = new System.Drawing.Size(800, 50);
-            this.progressPanel.TabIndex = 0;
-            // 
-            // buttonsPanel
-            // 
-            this.buttonsPanel.Controls.Add(this.cancelButton);
-            this.buttonsPanel.Controls.Add(this.buttonsSplitter);
-            this.buttonsPanel.Controls.Add(this.executeButton);
-            this.buttonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonsPanel.Location = new System.Drawing.Point(0, 50);
-            this.buttonsPanel.Name = "buttonsPanel";
-            this.buttonsPanel.Size = new System.Drawing.Size(800, 50);
-            this.buttonsPanel.TabIndex = 1;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(0, 0);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(800, 50);
-            this.progressBar.TabIndex = 0;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelButton.Dock = System.Windows.Forms.DockStyle.Left;
-            this.cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.cancelButton.Location = new System.Drawing.Point(399, 0);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(401, 50);
-            this.cancelButton.TabIndex = 0;
-            this.cancelButton.Text = "cancel button";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // buttonsSplitter
-            // 
-            this.buttonsSplitter.Location = new System.Drawing.Point(396, 0);
-            this.buttonsSplitter.Name = "buttonsSplitter";
-            this.buttonsSplitter.Size = new System.Drawing.Size(3, 50);
-            this.buttonsSplitter.TabIndex = 1;
-            this.buttonsSplitter.TabStop = false;
+            this.mainBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.mainBackgroundWorker_DoWork);
+            this.mainBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.mainBackgroundWorker_ProgressChanged);
+            this.mainBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.mainBackgroundWorker_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -284,12 +287,12 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.buttonsPanel.ResumeLayout(false);
+            this.progressPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.progressPanel.ResumeLayout(false);
-            this.buttonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

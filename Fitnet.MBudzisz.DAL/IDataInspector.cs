@@ -8,6 +8,6 @@ namespace Fitnet.MBudzisz.DAL
 {
     public interface IDataInspector
     {
-        Task InspectDataLayer(string pathToDataSource, string lookupString);
+        void InspectDataLayer(string pathToDataSource, string lookupString);
     }
 }

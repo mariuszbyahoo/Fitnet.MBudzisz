@@ -8,7 +8,7 @@ namespace Fitnet.MBudzisz.DAL
 {
     public class HardDriveInspector : IDataInspector
     {
-        public Task InspectDataLayer(string pathToDataSource, string lookupString)
+        public void InspectDataLayer(string pathToDataSource, string lookupString)
         {
             throw new NotImplementedException();
         }
