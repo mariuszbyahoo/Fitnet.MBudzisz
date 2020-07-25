@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fitnet.MBudzisz.DAL\Fitnet.MBudzisz.DAL.csproj">
+      <Project>{480BC65F-3A30-4679-A4FE-BE683C9C8511}</Project>
+      <Name>Fitnet.MBudzisz.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
