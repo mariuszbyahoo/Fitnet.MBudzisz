@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitnet.MBudzisz.GUI", "Fitnet.MBudzisz.GUI\Fitnet.MBudzisz.GUI.csproj", "{CE486728-7410-41E7-A08D-18671D87DDFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitnet.MBudzisz.Utils", "Fitnet.MBudzisz.DAL\Fitnet.MBudzisz.Utils.csproj", "{480BC65F-3A30-4679-A4FE-BE683C9C8511}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitnet.MBudzisz.Utils", "Fitnet.MBudzisz.Utils\Fitnet.MBudzisz.Utils.csproj", "{480BC65F-3A30-4679-A4FE-BE683C9C8511}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
